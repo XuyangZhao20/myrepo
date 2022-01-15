@@ -1,0 +1,67 @@
+---
+title: "STATS230 Hw1"
+author: "Xuyang Zhao"
+date: "2022/1/15"
+output: word_document
+---
+
+```{r}
+library(Multiplication)
+library(bench)
+#3*3 matrices & vectors of lenght=3
+a<-rnorm(9)
+A<-matrix(a,nrow = 3,ncol = 3)
+b<-runif(9)
+B<-matrix(b,nrow = 3,ncol = 3)
+x<-rnorm(9)
+
+m1<-bench::mark(Multiply_mv(A,B,x, vector_first = T))
+m2<-bench::mark(Multiply_mv(A,B,x, vector_first = F))
+m1$median;m2$median  #median of running time
+m1$total_time;m2$total_time   #total time
+
+#5*5 matrices & vectors of lenght=5
+a<-rnorm(25)
+A<-matrix(a,nrow = 5,ncol = 5)
+b<-runif(25)
+B<-matrix(b,nrow = 5,ncol = 5)
+x<-rnorm(5)
+
+m1<-bench::mark(Multiply_mv(A,B,x, vector_first = T))
+m2<-bench::mark(Multiply_mv(A,B,x, vector_first = F))
+m1$median;m2$median  #median of running time
+m1$total_time;m2$total_time   #total time
+
+
+#10*10 matrices & vectors of lenght=10
+a<-rnorm(100)
+A<-matrix(a,nrow = 10,ncol = 10)
+b<-runif(100)
+B<-matrix(b,nrow = 10,ncol = 10)
+x<-rnorm(10)
+
+m1<-bench::mark(Multiply_mv(A,B,x, vector_first = T))
+m2<-bench::mark(Multiply_mv(A,B,x, vector_first = F))
+m1$median;m2$median  #median of running time
+m1$total_time;m2$total_time   #total time
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
